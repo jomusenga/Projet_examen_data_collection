@@ -31,34 +31,21 @@ while True:
         try:
 
             #Récupération du lien de la fiche détaillée du livre
-            lien_livre=livre.find_element(
-                By.CSS_SELECTOR,"h3 a"
-            ).get_attribute("href")
+            lien_livre=livre.find_element(By.CSS_SELECTOR,"h3 a" ).get_attribute("href")
 
 
             #Informations disponibles directement sur la page catalogue
-            titre=livre.find_element(
-                By.CSS_SELECTOR,"h3 a"
-            ).get_attribute("title")
+            titre=livre.find_element(By.CSS_SELECTOR,"h3 a").get_attribute("title")
 
-            prix=livre.find_element(
-                By.CLASS_NAME,"price_color"
-            ).text
+            prix=livre.find_element(By.CLASS_NAME,"price_color").text
 
-            disponibilite=livre.find_element(
-                By.CLASS_NAME,"instock"
-            ).text
+            disponibilite=livre.find_element(By.CLASS_NAME,"instock").text
 
-            note=livre.find_element(
-                By.CLASS_NAME,"star-rating"
-            ).get_attribute("class")
+            note=livre.find_element(By.CLASS_NAME,"star-rating").get_attribute("class")
 
 
             #Ouverture de la fiche détaillée dans un nouvel onglet
-            driver1.execute_script(
-                "window.open(arguments[0]);",
-                lien_livre
-            )
+            driver1.execute_script("window.open(arguments[0]);",lien_livre)
 
             #Passage vers le nouvel onglet
             driver1.switch_to.window(driver1.window_handles[-1])
@@ -66,30 +53,21 @@ while True:
 
             #Nombre de reviews
             try:
-                nombre_reviews=driver1.find_element(
-                    By.XPATH,
-                    "//th[text()='Number of reviews']/following-sibling::td"
-                ).text
+                nombre_reviews=driver1.find_element(By.XPATH,"//th[text()='Number of reviews']/following-sibling::td").text
             except:
                 nombre_reviews=""
 
 
             #Description
             try:
-                description=driver1.find_element(
-                    By.CSS_SELECTOR,
-                    "#product_description + p"
-                ).text
+                description=driver1.find_element(By.CSS_SELECTOR,"#product_description + p").text
             except:
                 description=""
 
 
             #Type de produit / Catégorie
             try:
-                breadcrumb=driver1.find_elements(
-                    By.CSS_SELECTOR,
-                    "ul.breadcrumb li a"
-                )
+                breadcrumb=driver1.find_elements(By.CSS_SELECTOR,"ul.breadcrumb li a")
 
                 categorie=breadcrumb[-1].text
 
@@ -99,10 +77,7 @@ while True:
 
             #Tax
             try:
-                tax=driver1.find_element(
-                    By.XPATH,
-                    "//th[text()='Tax']/following-sibling::td"
-                ).text
+                tax=driver1.find_element(By.XPATH,"//th[text()='Tax']/following-sibling::td").text
             except:
                 tax=""
 
@@ -143,10 +118,7 @@ while True:
 
     #Vérification de l'existance d'une page suivante pour la parcourir
     try:
-        bouton_suivant=driver1.find_element(
-            By.CSS_SELECTOR,
-            "li.next a"
-        )
+        bouton_suivant=driver1.find_element(By.CSS_SELECTOR,"li.next a")
 
         lien_suivant=bouton_suivant.get_attribute("href")
 
