@@ -420,3 +420,12 @@ if chemin_books_nocode.exists():
 else:
 
         st.warning("Le fichier brut Web Scraper Books est introuvable.")    
+
+
+#EVALUATION DE L'APPLICATION Via formulaire KoboToolbox ou Google Forms
+
+st.subheader("FORMULAIRES D'EVALUATION DE L'APPLICATION")
+
+st.link_button("Évaluer via KoboToolbox","https://ee-eu.kobotoolbox.org/x/BWx3Lswi")
+
+st.link_button(" Évaluer via Google Forms","https://docs.google.com/forms/d/e/1FAIpQLScTsGZlmdGrqGtW9ojOImLQlzLt4YMnta9EGb5CtWzla3pcrQ/viewform")
