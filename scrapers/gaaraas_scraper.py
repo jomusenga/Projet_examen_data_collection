@@ -15,6 +15,8 @@ def scraper_gaaraas(nombre_pages):
     options = webdriver.ChromeOptions()
     options.page_load_strategy = "eager"
     options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
 
     #Lancement du navigateur
     driver2 = webdriver.Chrome(options=options)

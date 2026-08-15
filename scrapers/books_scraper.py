@@ -14,6 +14,8 @@ def scraper_books(nombre_pages):
 
     #Mode headless pour permettre l'exécution depuis Streamlit
     options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
 
     #Url source1
     url1="https://books.toscrape.com/catalogue/page-1.html"

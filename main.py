@@ -12,12 +12,7 @@ from scrapers.gaaraas_scraper import scraper_gaaraas
 
 #CONFIGURATION DE L'APPLICATION
 
-st.set_page_config(
-    page_title="Data Collection & Visualization",
-    page_icon="D:\Mon programme de MASTER_DIT\Master 1\Cours\Data Collection\Seances\Projet\Projet_examen_data_collection\icones\surveiller.png",
-    layout="wide"
-)
-
+st.set_page_config(page_title="Data Collection & Visualization",page_icon="icones/surveiller.png",layout="wide")
 
 #DEFINITION DES CHEMINS:
 
