@@ -14,6 +14,7 @@ def scraper_gaaraas(nombre_pages):
     #Configuration du navigateur
     options = webdriver.ChromeOptions()
     options.page_load_strategy = "eager"
+    options.binary_location="/usr/bin/chromium"
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")

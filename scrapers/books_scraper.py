@@ -11,6 +11,7 @@ def scraper_books(nombre_pages):
 
     #Configuration du navigateur
     options=webdriver.ChromeOptions()
+    options.binary_location="/usr/bin/chromium"
 
     #Mode headless pour permettre l'exécution depuis Streamlit
     options.add_argument("--headless")
