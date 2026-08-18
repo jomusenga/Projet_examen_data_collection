@@ -1,11 +1,14 @@
 #import des packages
+from requests import options
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from pprint import pprint
 from pathlib import Path
 import pandas as pd
+import os
 
 
 #Fonction principale de scraping
@@ -14,13 +17,21 @@ def scraper_gaaraas(nombre_pages):
     #Configuration du navigateur
     options = webdriver.ChromeOptions()
     options.page_load_strategy = "eager"
-    options.binary_location="/usr/bin/chromium"
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    #Lancement du navigateur
-    driver2 = webdriver.Chrome(options=options)
+
+    #Configuration spécifique pour Streamlit Cloud
+    if os.path.exists("/usr/bin/chromium"):
+        options.binary_location="/usr/bin/chromium"
+
+   #Lancement du navigateur
+    if os.path.exists("/usr/bin/chromedriver"):
+        service=Service("/usr/bin/chromedriver")
+        driver2=webdriver.Chrome(service=service,options=options)
+    else:
+        driver2=webdriver.Chrome(options=options)
 
     #Délai maximal de chargement
     driver2.set_page_load_timeout(120)

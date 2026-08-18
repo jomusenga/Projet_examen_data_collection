@@ -1,9 +1,11 @@
 #import des packages
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from pprint import pprint
 import pandas as pd
 from pathlib import Path
+import os
 
 
 #Fonction principale de scraping
@@ -11,18 +13,25 @@ def scraper_books(nombre_pages):
 
     #Configuration du navigateur
     options=webdriver.ChromeOptions()
-    options.binary_location="/usr/bin/chromium"
 
     #Mode headless pour permettre l'exécution depuis Streamlit
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    #Url source1
-    url1="https://books.toscrape.com/catalogue/page-1.html"
+    #Configuration spécifique pour Streamlit Cloud
+    if os.path.exists("/usr/bin/chromium"):
+        options.binary_location="/usr/bin/chromium"
 
     #Lancement du navigateur:
-    driver1=webdriver.Chrome(options=options)
+    if os.path.exists("/usr/bin/chromedriver"):
+        service=Service("/usr/bin/chromedriver")
+        driver1=webdriver.Chrome(service=service,options=options)
+    else:
+        driver1=webdriver.Chrome(options=options)
+
+    #Url source1
+    url1="https://books.toscrape.com/catalogue/page-1.html"
 
     #Ouverture du site1
     driver1.get(url1)
