@@ -4,6 +4,7 @@ import sqlite3
 import pandas as pd
 import plotly.express as px
 from pathlib import Path
+import shutil
 
 #Import de la fonction de scraping Books
 from scrapers.books_scraper import scraper_books
@@ -49,6 +50,8 @@ df_gaaraas["Annee"] = df_gaaraas["Annee"].astype("Int64")
 st.title("Application de collecte et visualisation des données")
 
 st.write("""Application de web scraping, nettoyage, stockageet visualisation des données.""")
+st.write("Chromium :", shutil.which("chromium"))
+st.write("ChromeDriver :", shutil.which("chromedriver"))
 
 st.divider()
 
